@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+#
+# Options:
+#  $ sassic <target>            - create a new sassic site
+#  $ sassic [-p 4000]           - start the sassic server (from within a sassic site)
+#  $ sassic build [-relative]   - produce static output files
+#
+
+require 'rubygems'
+require 'optparse'
+
+require File.dirname(__FILE__) + '/../lib/sassic'
+
+Sassic::Exec.run!
