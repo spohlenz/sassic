@@ -1,7 +1,10 @@
 class Sassic::Generator
-  FOLDERS = ['images', 'stylesheets', 'javascripts', 'templates']
+  DIRECTORIES = ['images', 'sass', 'javascripts', 'templates']
+  
   FILES = {
-    'layout.html.erb' => 'templates/layout.html.erb'
+    'layout.html.erb' => 'templates/layout.html.erb',
+    'index.html.erb'  => 'templates/index.html.erb',
+    'screen.sass'     => 'sass/screen.sass'
   }
   
   attr_reader :target
@@ -18,18 +21,22 @@ class Sassic::Generator
 private
   def create_directories!
     create_directory(target)
-    FOLDERS.each { |f| create_directory(File.join(target, f)) }
+    DIRECTORIES.each { |d| create_directory(File.join(target, d)) }
   end
   
   def create_files!
     FILES.each do |src, dest|
-      FileUtils.cp File.join(File.dirname(__FILE__), 'files', src), File.join(target, dest)
-      puts "Created file #{dest}"
+      create_file(File.join(File.dirname(__FILE__), 'files', src), File.join(target, dest))
     end
   end
   
-  def create_directory(f)
-    FileUtils.mkdir_p(f)
-    puts "Created directory #{f}"
+  def create_directory(d)
+    FileUtils.mkdir_p(d)
+    puts "Created directory #{d}"
+  end
+  
+  def create_file(src, dest)
+    FileUtils.cp src, dest
+    puts "Created file #{dest}"
   end
 end

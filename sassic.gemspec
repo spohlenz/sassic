@@ -13,9 +13,18 @@ Gem::Specification.new do |s|
   s.has_rdoc = false
   
   s.files = [ "README", 
-		          "sassic.gemspec", 
-		          "lib/sassic/generator.rb", 
-		          "lib/sassic/server.rb", 
+		          "sassic.gemspec",
+		          "lib/sassic/exec.rb",
+		          "lib/sassic/files/index.html.erb",
+		          "lib/sassic/files/layout.html.erb",
+		          "lib/sassic/files/screen.sass",
+		          "lib/sassic/generator.rb",
+		          "lib/sassic/page.rb",
+		          "lib/sassic/server.rb",
+		          "lib/sassic/servlets/layout.rb",
+		          "lib/sassic/servlets/sass.rb",
+		          "lib/sassic/servlets.rb",
+		          "lib/sassic/tasks.rb",
 		          "lib/sassic.rb",
 		          "bin/sassic" ]
 		
