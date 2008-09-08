@@ -25,6 +25,6 @@ private
   end
   
   def setup_static_mount_point(s, folder)
-    s.mount("/images", HTTPServlet::FileHandler, Dir::pwd + folder)
+    s.mount(folder, HTTPServlet::FileHandler, Dir::pwd + folder)
   end
 end
