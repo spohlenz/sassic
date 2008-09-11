@@ -4,5 +4,11 @@ module Sassic::Tasks
   end
   
   def self.build(options={})
+    port = options[:port] || 2000
+    
+    # TODO: Start a new server
+    
+    # Run builder
+    Sassic::Builder.new("http://localhost:#{port}", options).run!
   end
 end

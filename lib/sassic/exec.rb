@@ -4,7 +4,7 @@ class Sassic::Exec
     
     if target == 'build'
       # Build static output
-      Sassic::Tasks.build(:relative => options[:relative])
+      Sassic::Tasks.build(options)
     elsif target
       # Create new sassic site
       Sassic::Tasks.generate(target)
@@ -32,6 +32,10 @@ EOF
 
       opts.on('-r', '--relative', 'When used with build, makes all paths in the output relative') do
         options[:relative] = true
+      end
+      
+      opts.on('-o', '--output', 'When used with build, output files in into specified directory') do |output|
+        options[:output] = output
       end
 
       opts.on_tail("-h", "--help", "Show this message") do
