@@ -34,7 +34,7 @@ EOF
         options[:relative] = true
       end
       
-      opts.on('-o', '--output', 'When used with build, output files in into specified directory') do |output|
+      opts.on('-o', '--output DIR', 'When used with build, output files in into specified directory') do |output|
         options[:output] = output
       end
 

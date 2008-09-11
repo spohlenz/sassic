@@ -5,10 +5,12 @@ class Sassic::Builder
   def initialize(server, options={})
     @server = server
     @relative = options[:relative]
+    @output = options[:output] || 'output'
     @stylesheets = []
   end
   
   def run!
+    puts "Creating output directory..."
     create_output_directory
     
     # Static pages must be generated before stylesheets
@@ -34,8 +36,8 @@ class Sassic::Builder
 
 private
   def create_output_directory
-    FileUtils.rm_r('output') if File.exists?('output')
-    FileUtils.mkdir_p('output')
+    FileUtils.rm_r(@output) if File.exists?(@output)
+    FileUtils.mkdir_p(@output)
   end
   
   def generate_static_pages
@@ -49,20 +51,20 @@ private
   end
   
   def generate_stylesheets
-    FileUtils.mkdir_p('output/stylesheets')
+    FileUtils.mkdir_p("#{@output}/stylesheets")
     @stylesheets.each { |stylesheet| fetch_and_write(stylesheet, stylesheet) }
   end
   
   def copy_images
-    FileUtils.cp_r 'images', 'output/images'
+    FileUtils.cp_r 'images', "#{@output}/images"
   end
   
   def copy_javascripts
-    FileUtils.cp_r 'javascripts', 'output/javascripts'
+    FileUtils.cp_r 'javascripts', "#{@output}/javascripts"
   end
   
   def relativize_paths
-    files = Dir['output/**/*.{html,js,css}']
+    files = Dir["#{@output}/**/*.{html,js,css}"]
     files.each do |file|
       dirs = File.dirname(file).count('/')
       prefix = dirs == 0 ? './' : (['../'] * dirs).join
@@ -79,7 +81,7 @@ private
   
   def fetch_and_write(path, file)
     content = open("#{@server}/#{path}").read
-    File.open("output/#{file}", 'w') { |f| f.write(content) }
+    File.open("#{@output}/#{file}", 'w') { |f| f.write(content) }
     content
   end
   
