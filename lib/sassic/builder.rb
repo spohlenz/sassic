@@ -24,6 +24,11 @@ class Sassic::Builder
     puts "Copying javascripts..."
     copy_javascripts
     
+    if @relative
+      puts "Relativizing paths..."
+      relativize_paths
+    end
+    
     puts "Build completed."
   end
 
@@ -54,6 +59,18 @@ private
   
   def copy_javascripts
     FileUtils.cp_r 'javascripts', 'output/javascripts'
+  end
+  
+  def relativize_paths
+    files = Dir['output/**/*.{html,js,css}']
+    files.each do |file|
+      dirs = File.dirname(file).count('/')
+      prefix = dirs == 0 ? './' : (['../'] * dirs).join
+
+      content = open("#{file}").read
+      replaced = content.gsub(/\/(images|javascripts|stylesheets)/, "#{prefix}\\1")
+      File.open(file, 'w') { |f| f.write(replaced) }
+    end
   end
   
   def template_files
