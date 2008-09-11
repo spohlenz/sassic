@@ -12,11 +12,19 @@ class Sassic::Builder
     create_output_directory
     
     # Static pages must be generated before stylesheets
+    puts "Generating pages..."
     generate_static_pages
+    
+    puts "Generating stylesheets..."
     generate_stylesheets
     
+    puts "Copying images..."
     copy_images
+    
+    puts "Copying javascripts..."
     copy_javascripts
+    
+    puts "Build completed."
   end
 
 private
