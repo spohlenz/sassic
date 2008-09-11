@@ -10,7 +10,8 @@ class Sassic::Exec
       Sassic::Tasks.generate(target)
     else
       # Start server
-      Sassic::Server.new(options[:port] && options[:port] > 0 ? options[:port] : 2000).start
+      port = options[:port] && options[:port] > 0 ? options[:port] : 2000
+      Sassic::Server.new(port).start
     end
   end
 

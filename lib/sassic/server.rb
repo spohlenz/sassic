@@ -9,13 +9,13 @@ class Sassic::Server
     @port = port
   end
   
-  def start
-    s = HTTPServer.new(:Port => @port)
+  def start(options={})
+    s = HTTPServer.new(options.merge(:Port => @port))
     setup_mount_points(s)
     trap("INT") { s.shutdown }
     s.start
   end
-
+  
 private
   def setup_mount_points(s)
     setup_static_mount_point(s, '/javascripts')
