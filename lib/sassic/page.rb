@@ -3,11 +3,14 @@ require 'erb'
 class Sassic::Page
   def initialize(template)
     @template = template
-    @template_content = File.read(template_path(template)) if exists?
-    @layout_content = File.read(layout_path)
     
-    # Preparse template content
-    content
+    if exists?
+      @template_content = File.read(template_path(template))
+      @layout_content = File.read(layout_path)
+    
+      # Preparse template content
+      content
+    end
   end
   
   def template_path(template)
