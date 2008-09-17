@@ -21,7 +21,7 @@ private
     setup_static_mount_point(s, '/javascripts')
     setup_static_mount_point(s, '/images')
     s.mount("/stylesheets", Sassic::Servlets::SassServlet)
-    s.mount("/", Sassic::Servlets::LayoutServlet)
+    s.mount("/", Sassic::Servlets::TemplateServlet)
   end
   
   def setup_static_mount_point(s, folder)

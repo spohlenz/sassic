@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../page'
 
-class Sassic::Servlets::LayoutServlet < WEBrick::HTTPServlet::AbstractServlet
+class Sassic::Servlets::TemplateServlet < WEBrick::HTTPServlet::AbstractServlet
   def do_GET(req, res)
     page = Sassic::Page.new(req.path == '/' ? 'index' : req.path.sub(/^\//, ''))
     
