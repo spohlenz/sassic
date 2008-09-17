@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "sassic"
-  s.version = "0.2"
+  s.version = "0.2.1"
   s.date = "2008-09-17"
   
   s.authors = [ "Sam Pohlenz" ]
@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
 		          "lib/sassic/generator.rb",
 		          "lib/sassic/page.rb",
 		          "lib/sassic/server.rb",
-		          "lib/sassic/servlets/layout.rb",
+		          "lib/sassic/servlets/template.rb",
 		          "lib/sassic/servlets/sass.rb",
 		          "lib/sassic/servlets.rb",
 		          "lib/sassic/builder.rb",
