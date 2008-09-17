@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = "sassic"
-  s.version = "0.1"
-  s.date = "2008-09-11"
+  s.version = "0.2"
+  s.date = "2008-09-17"
   
   s.authors = [ "Sam Pohlenz" ]
   s.email = "sam@sampohlenz.com"
@@ -31,7 +31,6 @@ Gem::Specification.new do |s|
 		
 	s.executables = ['sassic']
   
-  #s.add_dependency("diff-lcs", ["> 0.0.0"])
-  #s.add_dependency("mime-types", ["> 0.0.0"])
-  #s.add_dependency("open4", ["> 0.0.0"])
+  s.add_dependency("hpricot", ["> 0.6"])
+  s.add_dependency("haml", ["> 2.0.0"])
 end
