@@ -2,10 +2,10 @@ require 'erb'
 
 class Sassic::Page
   def initialize(template)
-    @template = template
+    @template = template.sub(/\.html$/, '')
     
     if exists?
-      @template_content = File.read(template_path(template))
+      @template_content = File.read(template_path(@template))
       @layout_content = File.read(layout_path)
     
       # Preparse template content

@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = "sassic"
-  s.version = "0.2.1"
-  s.date = "2008-09-17"
+  s.version = "0.2.2"
+  s.date = "2008-11-13"
   
   s.authors = [ "Sam Pohlenz" ]
   s.email = "sam@sampohlenz.com"
