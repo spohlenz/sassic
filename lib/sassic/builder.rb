@@ -70,7 +70,7 @@ private
       prefix = dirs == 0 ? './' : (['../'] * dirs).join
 
       content = open("#{file}").read
-      replaced = content.gsub(/\/(images|javascripts|stylesheets)/, "#{prefix}\\1")
+      replaced = content.gsub(/\/(images|javascripts|stylesheets|[^"]*\.html)/, "#{prefix}\\1")
       File.open(file, 'w') { |f| f.write(replaced) }
     end
   end
@@ -81,6 +81,7 @@ private
   
   def fetch_and_write(path, file)
     content = open("#{@server}/#{path}").read
+    FileUtils.mkdir_p(File.dirname("#{@output}/#{file}"))
     File.open("#{@output}/#{file}", 'w') { |f| f.write(content) }
     content
   end
