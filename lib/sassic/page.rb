@@ -13,7 +13,7 @@ class Sassic::Page
     end
   end
   
-  def template_path(template)
+  def template_path(template=@template)
     Dir::pwd + '/templates/' + template + '.html.erb'
   end
   
