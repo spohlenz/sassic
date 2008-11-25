@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{sassic}
-  s.version = "0.2.4"
+  s.version = "0.2.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sam Pohlenz"]
-  s.date = %q{2008-11-20}
+  s.date = %q{2008-11-25}
   s.default_executable = %q{sassic}
   s.description = %q{Sassic is a simple framework for creating static web sites using SASS stylesheets.}
   s.email = %q{sam@sampohlenz.com}
