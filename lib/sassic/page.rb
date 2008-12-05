@@ -6,10 +6,11 @@ class Sassic::Page
     
     if exists?
       @template_content = File.read(template_path(@template))
-      @layout_content = File.read(layout_path)
-    
+      
       # Preparse template content
       content
+      
+      @layout_content = File.read(layout_path)
     end
   end
   
@@ -18,7 +19,7 @@ class Sassic::Page
   end
   
   def layout_path
-    Dir::pwd + '/templates/layout.html.erb'
+    Dir::pwd + "/templates/#{layout}.html.erb"
   end
   
   def exists?
@@ -40,6 +41,11 @@ class Sassic::Page
   def title(new_title=nil)
     @title = new_title if new_title
     @title
+  end
+  
+  def layout(new_layout=nil)
+    @layout = new_layout if new_layout
+    @layout || 'layout'
   end
   
   def body_classes(new_classes=nil)

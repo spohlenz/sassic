@@ -56,11 +56,11 @@ private
   end
   
   def copy_images
-    FileUtils.cp_r 'images', "#{@output}/images"
+    FileUtils.cp_r 'images', "#{@output}/images" if File.exists?('images')
   end
   
   def copy_javascripts
-    FileUtils.cp_r 'javascripts', "#{@output}/javascripts"
+    FileUtils.cp_r 'javascripts', "#{@output}/javascripts" if File.exists?('javascripts')
   end
   
   def relativize_paths
@@ -76,7 +76,7 @@ private
   end
   
   def template_files
-    Dir['templates/**/*.html.erb'] - ['templates/layout.html.erb'] - Dir['templates/**/_*.html.erb']
+    Dir['templates/**/*.html.erb'] - Dir['templates/*layout.html.erb'] - Dir['templates/**/_*.html.erb']
   end
   
   def fetch_and_write(path, file)
